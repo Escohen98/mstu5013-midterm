@@ -1,21 +1,30 @@
 <template>
-    <img class="key" v-bind:id="{keyNum}" v-bind:href="{keyImage}"/>
-    <audio>
-        <source v-bind:src="{keyAudio}">
+    <img @click="play()" class="key" :id="keyNum" alt="broken image" :src="keyImage"/>
+    <audio ref="audioPlayer">
+        <source :src="keyAudio" type="audio/mpeg">
+        Audio is not supported on this browser.
     </audio>
 </template>
 
 <script>
 export default {
-    name: 'key',
+    name: 'KeyBoard',
+    props: {
+        keyNum: Number,
+        keyAudio: String, //Audio on click
+        keyImage: String, //Default image
+       //keyHoverImage: String, //Image on hover
+    },
     data() {
         return {
-            keyNum: Number,
-            keyImage: String, //Default image
-            keyHoverImage: String, //Image on hover
-            keyAudio: String, //Audio on click
-            keyRef: String //Ref to play the audio
         };
+    },
+    methods: {
+        //Plays the audio
+        //Taken from https://thewebdev.info/2021/01/21/add-an-audio-player-with-vue-3-and-javascript/
+        play() {
+            this.$refs.audioPlayer.play();
+        }
     }
 }
 </script>
@@ -26,7 +35,8 @@ export default {
         border: 2px solid black;
     }
 
-    .key:hover {
-        box-shadow: 4px rgba(255, 255, 0, .1);
+    img:hover {
+        box-shadow: 20px rgba(255, 255, 0, 1);
+        border: 1px solid yellow;
     }
 </style>
