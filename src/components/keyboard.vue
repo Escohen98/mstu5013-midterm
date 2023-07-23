@@ -1,7 +1,7 @@
 <template>
     <img @click="play()" class="key" :id="keyNum" alt="broken image" :src="keyImage"/>
     <audio ref="audioPlayer">
-        <source :src="keyAudio" type="audio/mpeg">
+        <source :src="keySounds" type="audio/mpeg">
         Audio is not supported on this browser.
     </audio>
 </template>
@@ -11,7 +11,7 @@ export default {
     name: 'KeyBoard',
     props: {
         keyNum: Number,
-        keyAudio: String, //Audio on click
+        keySounds: String, //Audio on click
         keyImage: String, //Default image
        //keyHoverImage: String, //Image on hover
     },
@@ -36,7 +36,7 @@ export default {
     }
 
     img:hover {
-        box-shadow: 20px rgba(255, 255, 0, 1);
+        box-shadow: 20px rgba(255, 255, 0, 0.5);
         border: 1px solid yellow;
     }
 </style>
