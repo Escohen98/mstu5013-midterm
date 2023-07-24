@@ -1,4 +1,8 @@
 <template>
+    <!-- Key instance for the keyboard
+Handles each individual button. 
+Do bear in mind that this was originally supposed to be a piano until I realized 
+the sound response time was too slow -->
     <img @click="play()" class="key" :id="keyNum" alt="broken image" :src="keyImage"/>
     <audio ref="audioPlayer">
         <source :src="keySounds" type="audio/mpeg">
@@ -32,7 +36,16 @@ export default {
 <style scoped>
     .key {
         background-color: white; /*Default key */
-        border: 2px solid black;
+        border: 2px inset rgb(125, 125, 125);
+        margin-right: 5px;
+        border-radius: 50%;
+    }
+
+    img {
+        /* I couldn't get the dang aspect ratio to work */
+        max-width: 100%;
+        height: 5em;
+      
     }
 
     img:hover {
